@@ -1,14 +1,23 @@
 let numRows = 0;
-let numCols = 0;
+let numCols = 1;
 let colorSelected;
 
 //Add a row
 function addR() {
-    alert("Clicked Add Row")
+    // alert("Clicked Add Row");
+    numRows++;
+    let i = document.createElement("tr");
+    document.getElementById("grid").appendChild(i);
+    let q = document.getElementById("grid").lastChild;
+    for (j = 0; j < numCols; j++)
+    {
+      p = document.createElement("td");
+      q.appendChild(p);
+    }
 }
 //Add a column
 function addC() {
-    alert("Clicked Add Col")
+    alert("Clicked Add Col");
 }
 
 //Remove a row
