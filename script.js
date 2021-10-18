@@ -45,8 +45,13 @@ function addC() {
 //Remove a row
 function removeR() {
     // alert("Clicked Remove Row")
-    if (numRows == 1)
+    if (numRows <= 1)
+    {
       numCols = 0;
+      numRows = 0;
+      document.getElementById("grid").lastChild.remove();
+      return;
+    }
 
     numRows--;
     document.getElementById("grid").lastChild.remove();
