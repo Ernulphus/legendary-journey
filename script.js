@@ -7,7 +7,7 @@ function addR() {
     // alert("Clicked Add Row");
     numRows++;
 
-    if (numCols == 0)
+    if (numCols <= 0)
       numCols = 1;
 
     let i = document.createElement("tr");
@@ -25,7 +25,7 @@ function addC() {
     // alert("Clicked Add Col");
     numCols++;
 
-    if (numRows == 0)
+    if (numRows <= 0)
     {
       numRows = 1;
       let i = document.createElement("tr");
@@ -41,7 +41,9 @@ function addC() {
 
 //Remove a row
 function removeR() {
-    alert("Clicked Remove Row")
+    // alert("Clicked Remove Row")
+    numRows--;
+    document.getElementById("grid").lastChild.remove();
 }
 //Remove a column
 function removeC() {
