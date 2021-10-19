@@ -107,7 +107,15 @@ function fill(){
 }
 
 function clearAll(){
-    alert("Clicked Clear All")
+    // alert("Clicked Clear All")
+    let grid = document.getElementById("grid")
+    for (let i = 0; i < numRows; i++)
+    {
+      for (let j = 0; j < numCols; j++)
+      {
+        grid.children[i].children[j].style["background-color"] = "";
+      }
+    }
 }
 
 function fillU(){
