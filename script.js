@@ -111,5 +111,17 @@ function clearAll(){
 }
 
 function fillU(){
-    alert("Clicked Fill All Uncolored")
+    // alert("Clicked Fill All Uncolored")
+    let grid = document.getElementById("grid")
+    for (let i = 0; i < numRows; i++)
+    {
+      for (let j = 0; j < numCols; j++)
+      {
+        if (grid.children[i].children[j].style["background-color"] == "white" ||
+            grid.children[i].children[j].style["background-color"] == "")
+        {
+          grid.children[i].children[j].style["background-color"] = colorSelected;
+        }
+      }
+    }
 }
