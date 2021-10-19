@@ -93,8 +93,17 @@ document.getElementById("grid").addEventListener("click", event => {
     }
   });
 
+// Fill all uncolored squares with the selected color
 function fill(){
-    alert("Clicked Fill All")
+    // alert("Clicked Fill All")
+    let grid = document.getElementById("grid")
+    for (let i = 0; i < numRows; i++)
+    {
+      for (let j = 0; j < numCols; j++)
+      {
+          grid.children[i].children[j].style["background-color"] = colorSelected;
+      }
+    }
 }
 
 function clearAll(){
