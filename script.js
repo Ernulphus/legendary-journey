@@ -1,6 +1,6 @@
 let numRows = 0;
 let numCols = 0;
-let colorSelected;
+let colorSelected = "red";
 
 //Add a row
 function addR() {
@@ -81,8 +81,17 @@ function removeC() {
 //sets global var for selected color
 function selected(){
     colorSelected = document.getElementById("selectedID").value;
+    if (colorSelected == "SELECT")
+      colorSelected = "White";
     console.log(colorSelected);
 }
+
+// Clicking a square changes its color
+document.getElementById("grid").addEventListener("click", event => {
+    if (event.target.nodeName == "TD") {
+      event.target.style["background-color"] = colorSelected;
+    }
+  });
 
 function fill(){
     alert("Clicked Fill All")
