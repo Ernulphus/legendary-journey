@@ -1,6 +1,7 @@
 let numRows = 0;
 let numCols = 0;
-let colorSelected = "red";
+let colorSelected;
+selected();
 
 //Add a row
 function addR() {
@@ -45,44 +46,44 @@ function addC() {
 //Remove a row
 function removeR() {
     // alert("Clicked Remove Row")
-    if (numRows <= 1)
+    if (numRows > 1)
     {
-      numCols = 0;
-      numRows = 0;
+      numRows--;
       document.getElementById("grid").lastChild.remove();
       return;
     }
 
-    numRows--;
+    numCols = 0;
+    numRows = 0;
     document.getElementById("grid").lastChild.remove();
 }
 
 //Remove a column
 function removeC() {
     // alert("Clicked Remove Col")
-    if (numCols == 1)
+    if (numCols > 1)
     {
-      while (numRows > 0)
+      numCols--;
+      for (j = 0; j < numRows; j++)
       {
-        document.getElementById("grid").lastChild.remove();
-        numRows--;
+        document.body.getElementsByTagName("tr")[j].lastChild.remove();
       }
-      numCols = 0;
       return;
     }
 
-    numCols--;
-    for (j = 0; j < numRows; j++)
+    while (numRows > 0)
     {
-      document.body.getElementsByTagName("tr")[j].lastChild.remove();
+      document.getElementById("grid").lastChild.remove();
+      numRows--;
     }
+    numCols = 0;
 }
 
 //sets global var for selected color
 function selected(){
     colorSelected = document.getElementById("selectedID").value;
     if (colorSelected == "SELECT")
-      colorSelected = "White";
+      colorSelected = "";
     console.log(colorSelected);
 }
 
@@ -96,24 +97,22 @@ document.getElementById("grid").addEventListener("click", event => {
 // Fill all uncolored squares with the selected color
 function fill(){
     // alert("Clicked Fill All")
-    let grid = document.getElementById("grid")
     for (let i = 0; i < numRows; i++)
     {
       for (let j = 0; j < numCols; j++)
       {
-          grid.children[i].children[j].style["background-color"] = colorSelected;
+          document.getElementById("grid").children[i].children[j].style["background-color"] = colorSelected;
       }
     }
 }
 
 function clearAll(){
     // alert("Clicked Clear All")
-    let grid = document.getElementById("grid")
     for (let i = 0; i < numRows; i++)
     {
       for (let j = 0; j < numCols; j++)
       {
-        grid.children[i].children[j].style["background-color"] = "";
+        document.getElementById("grid").children[i].children[j].style["background-color"] = "";
       }
     }
 }
